@@ -4,11 +4,10 @@ class Cellule:
         self.valeur = v
         self.suivante = s
         
+    def __repr__(self):
+        return f"{self.valeur} -> {self.suivante}"
         
     
-l_c = Cellule(1, Cellule(2, Cellule(3, None)))
-
-print(l_c.suivante.suivante.valeur)
 
 
 def longueur(liste_ch):
@@ -62,3 +61,28 @@ def affiche_rec(l_c):
     else:
         print(l_c.valeur, end = " ")
         affiche_rec(l_c.suivante)
+        
+## Exercice 5
+        
+def listeN(n):
+    liste = None
+    if n == 0:
+        return liste
+    else:
+        for i in range(n, 0, -1):
+            liste = Cellule(i, liste)
+        return liste
+    
+## Exercice 6
+    
+def occurences_rec(x, l_c):
+    if l_c is None:
+        return 0
+    else:
+        if l_c.valeur == x:
+            return 1 + occurences_rec(x, l_c.suivante)
+        else:
+            return occurences_rec(x, l_c.suivante)
+        
+
+            
